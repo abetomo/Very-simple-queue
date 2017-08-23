@@ -1,0 +1,22 @@
+{
+  "name": "@abetomo/vsq",
+  "version": "0.0.1",
+  "description": "Very simple queue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abetomo/Very-simple-queue.git"
+  },
+  "keywords": [
+    "queue"
+  ],
+  "author": "abetomo",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/abetomo/Very-simple-queue/issues"
+  },
+  "homepage": "https://github.com/abetomo/Very-simple-queue#readme"
+}
