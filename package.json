@@ -6,6 +6,9 @@
   "scripts": {
     "test": "standard && jest"
   },
+  "bin": {
+    "vsq": "./bin/vsq.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abetomo/Very-simple-queue.git"
