@@ -14,7 +14,8 @@
     "url": "git+https://github.com/abetomo/Very-simple-queue.git"
   },
   "keywords": [
-    "queue"
+    "queue",
+    "stack"
   ],
   "author": "abetomo",
   "license": "GPL-3.0",
