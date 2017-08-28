@@ -7,11 +7,13 @@ const execSync = require('child_process').execSync
 
 const binVsq = path.join(__dirname, '..', 'vsq.js')
 const testFile = path.join(os.tmpdir(), 'test.json')
+const testSqsFile = path.join(os.tmpdir(), 'test.sqs.json')
 
 /* global describe, test, expect, afterEach */
 describe('bin/vsq.js', () => {
   afterEach(() => {
     if (fs.existsSync(testFile)) fs.unlinkSync(testFile)
+    if (fs.existsSync(testSqsFile)) fs.unlinkSync(testSqsFile)
   })
 
   test('The current version is displayed', () => {
@@ -48,5 +50,34 @@ describe('bin/vsq.js', () => {
     expect(ret.toString().trim()).toBe('v1')
     ret = execSync(`node ${binVsq} pop -d ${testFile}`)
     expect(ret.toString().trim()).toBe('')
+  })
+
+  describe('SQS-like commands', () => {
+    let ret = null
+    let id1 = ''
+    let id2 = ''
+    const idRegExp =
+      /\d{9}-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/
+
+    ret = execSync(`node ${binVsq} send -d ${testSqsFile} -v 'v1'`)
+    id1 = ret.toString().trim()
+    expect(id1).toMatch(idRegExp)
+
+    ret = execSync(`node ${binVsq} send -d ${testSqsFile} -v 'v2'`)
+    id2 = ret.toString().trim()
+    expect(id2).toMatch(idRegExp)
+
+    ret = execSync(`node ${binVsq} receive -d ${testSqsFile}`)
+    let data = JSON.parse(ret.toString().trim())
+    expect(data.id).toMatch(idRegExp)
+    expect(data.body).toMatch(/^v\d$/)
+
+    ret = execSync(`node ${binVsq} delete -d ${testSqsFile} -i '${id1}'`)
+    expect(ret.toString().trim()).toBe('true')
+
+    ret = execSync(`node ${binVsq} receive -d ${testSqsFile}`)
+    data = JSON.parse(ret.toString().trim())
+    expect(data.id).toBe(id2)
+    expect(data.body).toBe('v2')
   })
 })
