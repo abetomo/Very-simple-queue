@@ -1,6 +1,7 @@
 # Very-simple-queue
 
-Very simple queue
+Very simple queue.
+And a very simple SQS like queue.
 
 ## install
 ```
