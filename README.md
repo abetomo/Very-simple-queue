@@ -28,7 +28,28 @@ value2
 {"key": "value1"}
 ```
 
+### Use it like a SQS
+```
+% vsq send -d /tmp/example-sqs.db -v 'value1'
+150390342-39bb8a1f-dd3c-488f-9ac8-f0b8383d9ae5
+% vsq send -d /tmp/example-sqs.db -v 'value2'
+150390342-1c95158b-381d-4735-b888-01e49f22bc3c
+% vsq receive -d /tmp/example-sqs.db
+{
+  "id": "150390342-1c95158b-381d-4735-b888-01e49f22bc3c",
+  "body": "value2"
+}
+% vsq delete -d /tmp/example-sqs.db -i "150390342-1c95158b-381d-4735-b888-01e49f22bc3c"
+true
+% vsq receive -d /tmp/example-sqs.db
+{
+  "id": "150390342-39bb8a1f-dd3c-488f-9ac8-f0b8383d9ae5",
+  "body": "value1"
+}
+```
+
 ## Usage example of Node.js API
+### Simple queue and stack
 ```javascript
 const VerySimpleQueue = require('@abetomo/vsq')
 const vsq = new VerySimpleQueue()
@@ -57,5 +78,33 @@ console.log('[pop]: %s', vsq.pop())
  * [shift]: value1
  * [pop]: value4
  * [pop]: value3
+ */
+```
+
+### SQS like
+```javascript
+const VerySimpleQueueLike = require('@abetomo/vsq').SQS
+const vsq = new VerySimpleQueueLike()
+const dbFile = '/tmp/test.sqs.db'
+
+vsq.load(dbFile)
+
+console.log('[send] data ID: %s', vsq.send('value1'))
+console.log('[send] data Id: %s', vsq.send('value2'))
+
+const data = vsq.receive()
+console.log('[receive]: %s', JSON.stringify(data))
+console.log('[delete]: %s', vsq.delete(data.id))
+
+console.log('[receive]: %s', JSON.stringify(vsq.receive()))
+
+/*
+ * Result:
+ *
+ * [send] data ID: 150390381-43b055bb-cccb-446a-a460-07d4a35697bc
+ * [send] data Id: 150390381-52795da6-0528-46c0-a0bd-8c535b292dc8
+ * [receive]: {"id":"150390381-43b055bb-cccb-446a-a460-07d4a35697bc","body":"value1"}
+ * [delete]: true
+ * [receive]: {"id":"150390381-52795da6-0528-46c0-a0bd-8c535b292dc8","body":"value2"}
  */
 ```
