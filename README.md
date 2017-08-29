@@ -84,8 +84,8 @@ console.log('[pop]: %s', vsq.pop())
 
 ### SQS like
 ```javascript
-const VerySimpleQueueLike = require('@abetomo/vsq').SQS
-const vsq = new VerySimpleQueueLike()
+const VerySimpleQueueLikeSQS = require('@abetomo/vsq').SQS
+const vsq = new VerySimpleQueueLikeSQS()
 const dbFile = '/tmp/test.sqs.db'
 
 vsq.load(dbFile)
