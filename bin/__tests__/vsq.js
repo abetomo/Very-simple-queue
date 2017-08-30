@@ -24,32 +24,36 @@ describe('bin/vsq.js', () => {
 
   describe('unshift and shift', () => {
     let ret = null
-    ret = execSync(`node ${binVsq} unshift -d ${testFile} -v 'v1'`)
-    expect(ret.toString()).toBe('')
-    ret = execSync(`node ${binVsq} unshift -d ${testFile} -v 'v2'`)
-    expect(ret.toString()).toBe('')
+    test('Test the result of the command', () => {
+      ret = execSync(`node ${binVsq} unshift -d ${testFile} -v 'v1'`)
+      expect(ret.toString()).toBe('')
+      ret = execSync(`node ${binVsq} unshift -d ${testFile} -v 'v2'`)
+      expect(ret.toString()).toBe('')
 
-    ret = execSync(`node ${binVsq} shift -d ${testFile}`)
-    expect(ret.toString().trim()).toBe('v2')
-    ret = execSync(`node ${binVsq} shift -d ${testFile}`)
-    expect(ret.toString().trim()).toBe('v1')
-    ret = execSync(`node ${binVsq} shift -d ${testFile}`)
-    expect(ret.toString().trim()).toBe('')
+      ret = execSync(`node ${binVsq} shift -d ${testFile}`)
+      expect(ret.toString().trim()).toBe('v2')
+      ret = execSync(`node ${binVsq} shift -d ${testFile}`)
+      expect(ret.toString().trim()).toBe('v1')
+      ret = execSync(`node ${binVsq} shift -d ${testFile}`)
+      expect(ret.toString().trim()).toBe('')
+    })
   })
 
   describe('push and pop', () => {
     let ret = null
-    ret = execSync(`node ${binVsq} push -d ${testFile} -v 'v1'`)
-    expect(ret.toString()).toBe('')
-    ret = execSync(`node ${binVsq} push -d ${testFile} -v 'v2'`)
-    expect(ret.toString()).toBe('')
+    test('Test the result of the command', () => {
+      ret = execSync(`node ${binVsq} push -d ${testFile} -v 'v1'`)
+      expect(ret.toString()).toBe('')
+      ret = execSync(`node ${binVsq} push -d ${testFile} -v 'v2'`)
+      expect(ret.toString()).toBe('')
 
-    ret = execSync(`node ${binVsq} pop -d ${testFile}`)
-    expect(ret.toString().trim()).toBe('v2')
-    ret = execSync(`node ${binVsq} pop -d ${testFile}`)
-    expect(ret.toString().trim()).toBe('v1')
-    ret = execSync(`node ${binVsq} pop -d ${testFile}`)
-    expect(ret.toString().trim()).toBe('')
+      ret = execSync(`node ${binVsq} pop -d ${testFile}`)
+      expect(ret.toString().trim()).toBe('v2')
+      ret = execSync(`node ${binVsq} pop -d ${testFile}`)
+      expect(ret.toString().trim()).toBe('v1')
+      ret = execSync(`node ${binVsq} pop -d ${testFile}`)
+      expect(ret.toString().trim()).toBe('')
+    })
   })
 
   describe('SQS-like commands', () => {
@@ -59,25 +63,27 @@ describe('bin/vsq.js', () => {
     const idRegExp =
       /\d{9}-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/
 
-    ret = execSync(`node ${binVsq} send -d ${testSqsFile} -v 'v1'`)
-    id1 = ret.toString().trim()
-    expect(id1).toMatch(idRegExp)
+    test('Test the result of the command', () => {
+      ret = execSync(`node ${binVsq} send -d ${testSqsFile} -v 'v1'`)
+      id1 = ret.toString().trim()
+      expect(id1).toMatch(idRegExp)
 
-    ret = execSync(`node ${binVsq} send -d ${testSqsFile} -v 'v2'`)
-    id2 = ret.toString().trim()
-    expect(id2).toMatch(idRegExp)
+      ret = execSync(`node ${binVsq} send -d ${testSqsFile} -v 'v2'`)
+      id2 = ret.toString().trim()
+      expect(id2).toMatch(idRegExp)
 
-    ret = execSync(`node ${binVsq} receive -d ${testSqsFile}`)
-    let data = JSON.parse(ret.toString().trim())
-    expect(data.id).toMatch(idRegExp)
-    expect(data.body).toMatch(/^v\d$/)
+      ret = execSync(`node ${binVsq} receive -d ${testSqsFile}`)
+      let data = JSON.parse(ret.toString().trim())
+      expect(data.id).toMatch(idRegExp)
+      expect(data.body).toMatch(/^v\d$/)
 
-    ret = execSync(`node ${binVsq} delete -d ${testSqsFile} -i '${id1}'`)
-    expect(ret.toString().trim()).toBe('true')
+      ret = execSync(`node ${binVsq} delete -d ${testSqsFile} -i '${id1}'`)
+      expect(ret.toString().trim()).toBe('true')
 
-    ret = execSync(`node ${binVsq} receive -d ${testSqsFile}`)
-    data = JSON.parse(ret.toString().trim())
-    expect(data.id).toBe(id2)
-    expect(data.body).toBe('v2')
+      ret = execSync(`node ${binVsq} receive -d ${testSqsFile}`)
+      data = JSON.parse(ret.toString().trim())
+      expect(data.id).toBe(id2)
+      expect(data.body).toBe('v2')
+    })
   })
 })
