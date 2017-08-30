@@ -1,5 +1,7 @@
 # Very-simple-queue
 
+[![npm version](https://badge.fury.io/js/%40abetomo%2Fvsq.svg)](https://badge.fury.io/js/%40abetomo%2Fvsq)
+
 Very simple queue.
 And a very simple SQS like queue.
 
@@ -84,8 +86,8 @@ console.log('[pop]: %s', vsq.pop())
 
 ### SQS like
 ```javascript
-const VerySimpleQueueLike = require('@abetomo/vsq').SQS
-const vsq = new VerySimpleQueueLike()
+const VerySimpleQueueLikeSQS = require('@abetomo/vsq').SQS
+const vsq = new VerySimpleQueueLikeSQS()
 const dbFile = '/tmp/test.sqs.db'
 
 vsq.load(dbFile)
