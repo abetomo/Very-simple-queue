@@ -75,7 +75,7 @@ describe('bin/vsq.js', () => {
       expect(data.id).toMatch(idRegExp)
       expect(data.body).toMatch(/^v\d$/)
 
-      ret = execSync(`node ${binVsq} delete -d ${testFile} -i '${id1}'`)
+      ret = execSync(`node ${binVsq} delete -d ${testFile} -i ${id1}`)
       expect(ret.toString().trim()).toBe('true')
 
       ret = execSync(`node ${binVsq} receive -d ${testFile}`)
