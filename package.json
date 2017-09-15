@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "standard",
     "test": "npm run lint && npm run unit",
-    "unit": "jest"
+    "unit": "jest -w 1"
   },
   "bin": {
     "vsq": "./bin/vsq.js"
