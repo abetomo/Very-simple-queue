@@ -1,6 +1,8 @@
 # Very-simple-queue
 
 [![npm version](https://badge.fury.io/js/%40abetomo%2Fvsq.svg)](https://badge.fury.io/js/%40abetomo%2Fvsq)
+[![Build Status](https://travis-ci.org/abetomo/Very-simple-queue.svg?branch=master)](https://travis-ci.org/abetomo/Very-simple-queue)
+[![Build status](https://ci.appveyor.com/api/projects/status/vk00ejf7tcsw633u/branch/master?svg=true)](https://ci.appveyor.com/project/abetomo/very-simple-queue/branch/master)
 
 Very simple queue.
 And a very simple SQS like queue.
