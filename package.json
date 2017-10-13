@@ -34,6 +34,15 @@
     "commander": "^2.11.0",
     "uuid": "^3.1.0"
   },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "bin",
+    "index.js",
+    "lib",
+    "package-lock.json",
+    "package.json"
+  ],
   "publishConfig": {
     "access": "public"
   }
