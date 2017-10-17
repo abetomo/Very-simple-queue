@@ -1,6 +1,6 @@
 {
   "name": "@abetomo/vsq",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Very simple queue. And a very simple SQS like queue.",
   "main": "index.js",
   "scripts": {
