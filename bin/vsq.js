@@ -18,7 +18,7 @@ program
   .option('-v, --value [VALUE]', 'Data to be added (string)')
   .action((prg) => {
     if (prg.db == null || prg.value == null) {
-      program.args[program.args.length - 1].outputHelp()
+      prg.outputHelp()
       process.exit(255)
     }
     vsq.load(prg.db)
@@ -31,7 +31,7 @@ program
   .option('-v, --value [VALUE]', 'Data to be added (string)')
   .action((prg) => {
     if (prg.db == null || prg.value == null) {
-      program.args[program.args.length - 1].outputHelp()
+      prg.outputHelp()
       process.exit(255)
     }
     vsq.load(prg.db)
@@ -43,7 +43,7 @@ program
   .option('-d, --db [DB_FILE_PATH]', 'Path of DB file used by VerySimpleQueue')
   .action((prg) => {
     if (prg.db == null) {
-      program.args[program.args.length - 1].outputHelp()
+      prg.outputHelp()
       process.exit(255)
     }
     vsq.load(prg.db)
@@ -56,7 +56,7 @@ program
   .option('-d, --db [DB_FILE_PATH]', 'Path of DB file used by VerySimpleQueue')
   .action((prg) => {
     if (prg.db == null) {
-      program.args[program.args.length - 1].outputHelp()
+      prg.outputHelp()
       process.exit(255)
     }
     vsq.load(prg.db)
@@ -70,7 +70,7 @@ program
   .option('-v, --value [VALUE]', 'Data to be added (string)')
   .action((prg) => {
     if (prg.db == null || prg.value == null) {
-      program.args[program.args.length - 1].outputHelp()
+      prg.outputHelp()
       process.exit(255)
     }
     vsqLikeSqs.load(prg.db)
@@ -82,7 +82,7 @@ program
   .option('-d, --db [DB_FILE_PATH]', 'Path of DB file used by VerySimpleQueueLikeSQS')
   .action((prg) => {
     if (prg.db == null) {
-      program.args[program.args.length - 1].outputHelp()
+      prg.outputHelp()
       process.exit(255)
     }
     vsqLikeSqs.load(prg.db)
@@ -95,7 +95,7 @@ program
   .option('-i, --id [DATA_ID]', 'Id of the data to delete')
   .action((prg) => {
     if (prg.db == null || prg.id == null) {
-      program.args[program.args.length - 1].outputHelp()
+      prg.outputHelp()
       process.exit(255)
     }
     vsqLikeSqs.load(prg.db)
