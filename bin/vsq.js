@@ -70,7 +70,7 @@ program
   .option('-v, --value [VALUE]', 'Data to be added (string)')
   .action((prg) => {
     if (prg.db == null || prg.value == null) {
-      program.args[program.args.length - 1].outputHelp()
+      prg.outputHelp()
       process.exit(255)
     }
     vsqLikeSqs.load(prg.db)
