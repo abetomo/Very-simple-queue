@@ -90,7 +90,6 @@ describe('bin/vsq.js', () => {
       const expected = `
   Usage: unshift [options]
 
-
   Options:
 
     -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
@@ -115,7 +114,6 @@ describe('bin/vsq.js', () => {
     describe('push', () => {
       const expected = `
   Usage: push [options]
-
 
   Options:
 
@@ -142,7 +140,6 @@ describe('bin/vsq.js', () => {
       const expected = `
   Usage: shift [options]
 
-
   Options:
 
     -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
@@ -165,7 +162,6 @@ describe('bin/vsq.js', () => {
       const expected = `
   Usage: pop [options]
 
-
   Options:
 
     -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
@@ -187,7 +183,6 @@ describe('bin/vsq.js', () => {
     describe('send', () => {
       const expected = `
   Usage: send [options]
-
 
   Options:
 
@@ -214,7 +209,6 @@ describe('bin/vsq.js', () => {
       const expected = `
   Usage: receive [options]
 
-
   Options:
 
     -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
@@ -236,7 +230,6 @@ describe('bin/vsq.js', () => {
     describe('delete', () => {
       const expected = `
   Usage: delete [options]
-
 
   Options:
 
