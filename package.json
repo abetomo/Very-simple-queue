@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/abetomo/Very-simple-queue#readme",
   "devDependencies": {
-    "jest": "^22.4.3",
+    "jest": "^23.1.0",
     "standard": "^11.0.1"
   },
   "dependencies": {
