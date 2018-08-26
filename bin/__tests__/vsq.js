@@ -95,6 +95,7 @@ describe('bin/vsq.js', () => {
     -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
     -v, --value [VALUE]      Data to be added (string)
     -h, --help               output usage information
+
 `
       ;[
         `node ${binVsq} unshift`,
@@ -120,6 +121,7 @@ describe('bin/vsq.js', () => {
     -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
     -v, --value [VALUE]      Data to be added (string)
     -h, --help               output usage information
+
 `
       ;[
         `node ${binVsq} push`,
@@ -144,6 +146,7 @@ describe('bin/vsq.js', () => {
 
     -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
     -h, --help               output usage information
+
 `
       ;[
         `node ${binVsq} shift`
@@ -166,6 +169,7 @@ describe('bin/vsq.js', () => {
 
     -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
     -h, --help               output usage information
+
 `
       ;[
         `node ${binVsq} pop`
@@ -189,6 +193,7 @@ describe('bin/vsq.js', () => {
     -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
     -v, --value [VALUE]      Data to be added (string)
     -h, --help               output usage information
+
 `
       ;[
         `node ${binVsq} send`,
@@ -213,6 +218,7 @@ describe('bin/vsq.js', () => {
 
     -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
     -h, --help               output usage information
+
 `
       ;[
         `node ${binVsq} receive`
@@ -236,6 +242,7 @@ describe('bin/vsq.js', () => {
     -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
     -i, --id [DATA_ID]       Id of the data to delete
     -h, --help               output usage information
+
 `
       ;[
         `node ${binVsq} delete`,
