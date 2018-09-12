@@ -87,15 +87,13 @@ describe('bin/vsq.js', () => {
 
   describe('Validity of argument', () => {
     describe('unshift', () => {
-      const expected = `
-  Usage: unshift [options]
+      const expected = `Usage: unshift [options]
 
-  Options:
+Options:
 
-    -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
-    -v, --value [VALUE]      Data to be added (string)
-    -h, --help               output usage information
-
+  -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
+  -v, --value [VALUE]      Data to be added (string)
+  -h, --help               output usage information
 `
       ;[
         `node ${binVsq} unshift`,
@@ -113,15 +111,13 @@ describe('bin/vsq.js', () => {
     })
 
     describe('push', () => {
-      const expected = `
-  Usage: push [options]
+      const expected = `Usage: push [options]
 
-  Options:
+Options:
 
-    -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
-    -v, --value [VALUE]      Data to be added (string)
-    -h, --help               output usage information
-
+  -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
+  -v, --value [VALUE]      Data to be added (string)
+  -h, --help               output usage information
 `
       ;[
         `node ${binVsq} push`,
@@ -139,14 +135,12 @@ describe('bin/vsq.js', () => {
     })
 
     describe('shift', () => {
-      const expected = `
-  Usage: shift [options]
+      const expected = `Usage: shift [options]
 
-  Options:
+Options:
 
-    -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
-    -h, --help               output usage information
-
+  -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
+  -h, --help               output usage information
 `
       ;[
         `node ${binVsq} shift`
@@ -162,14 +156,12 @@ describe('bin/vsq.js', () => {
     })
 
     describe('pop', () => {
-      const expected = `
-  Usage: pop [options]
+      const expected = `Usage: pop [options]
 
-  Options:
+Options:
 
-    -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
-    -h, --help               output usage information
-
+  -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
+  -h, --help               output usage information
 `
       ;[
         `node ${binVsq} pop`
@@ -185,15 +177,13 @@ describe('bin/vsq.js', () => {
     })
 
     describe('send', () => {
-      const expected = `
-  Usage: send [options]
+      const expected = `Usage: send [options]
 
-  Options:
+Options:
 
-    -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
-    -v, --value [VALUE]      Data to be added (string)
-    -h, --help               output usage information
-
+  -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
+  -v, --value [VALUE]      Data to be added (string)
+  -h, --help               output usage information
 `
       ;[
         `node ${binVsq} send`,
@@ -211,14 +201,12 @@ describe('bin/vsq.js', () => {
     })
 
     describe('receive', () => {
-      const expected = `
-  Usage: receive [options]
+      const expected = `Usage: receive [options]
 
-  Options:
+Options:
 
-    -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
-    -h, --help               output usage information
-
+  -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
+  -h, --help               output usage information
 `
       ;[
         `node ${binVsq} receive`
@@ -234,15 +222,13 @@ describe('bin/vsq.js', () => {
     })
 
     describe('delete', () => {
-      const expected = `
-  Usage: delete [options]
+      const expected = `Usage: delete [options]
 
-  Options:
+Options:
 
-    -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
-    -i, --id [DATA_ID]       Id of the data to delete
-    -h, --help               output usage information
-
+  -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
+  -i, --id [DATA_ID]       Id of the data to delete
+  -h, --help               output usage information
 `
       ;[
         `node ${binVsq} delete`,
