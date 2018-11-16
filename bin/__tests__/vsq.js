@@ -90,7 +90,6 @@ describe('bin/vsq.js', () => {
       const expected = `Usage: unshift [options]
 
 Options:
-
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
   -v, --value [VALUE]      Data to be added (string)
   -h, --help               output usage information
@@ -114,7 +113,6 @@ Options:
       const expected = `Usage: push [options]
 
 Options:
-
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
   -v, --value [VALUE]      Data to be added (string)
   -h, --help               output usage information
@@ -138,7 +136,6 @@ Options:
       const expected = `Usage: shift [options]
 
 Options:
-
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
   -h, --help               output usage information
 `
@@ -159,7 +156,6 @@ Options:
       const expected = `Usage: pop [options]
 
 Options:
-
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
   -h, --help               output usage information
 `
@@ -180,7 +176,6 @@ Options:
       const expected = `Usage: send [options]
 
 Options:
-
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
   -v, --value [VALUE]      Data to be added (string)
   -h, --help               output usage information
@@ -204,7 +199,6 @@ Options:
       const expected = `Usage: receive [options]
 
 Options:
-
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
   -h, --help               output usage information
 `
@@ -225,7 +219,6 @@ Options:
       const expected = `Usage: delete [options]
 
 Options:
-
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
   -i, --id [DATA_ID]       Id of the data to delete
   -h, --help               output usage information
