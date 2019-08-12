@@ -87,7 +87,7 @@ describe('bin/vsq.js', () => {
 
   describe('Validity of argument', () => {
     describe('unshift', () => {
-      const expected = `Usage: unshift [options]
+      const expected = `Usage: vsq unshift [options]
 
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
@@ -110,7 +110,7 @@ Options:
     })
 
     describe('push', () => {
-      const expected = `Usage: push [options]
+      const expected = `Usage: vsq push [options]
 
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
@@ -133,7 +133,7 @@ Options:
     })
 
     describe('shift', () => {
-      const expected = `Usage: shift [options]
+      const expected = `Usage: vsq shift [options]
 
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
@@ -153,7 +153,7 @@ Options:
     })
 
     describe('pop', () => {
-      const expected = `Usage: pop [options]
+      const expected = `Usage: vsq pop [options]
 
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
@@ -173,7 +173,7 @@ Options:
     })
 
     describe('send', () => {
-      const expected = `Usage: send [options]
+      const expected = `Usage: vsq send [options]
 
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
@@ -196,7 +196,7 @@ Options:
     })
 
     describe('receive', () => {
-      const expected = `Usage: receive [options]
+      const expected = `Usage: vsq receive [options]
 
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
@@ -216,7 +216,7 @@ Options:
     })
 
     describe('delete', () => {
-      const expected = `Usage: delete [options]
+      const expected = `Usage: vsq delete [options]
 
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
