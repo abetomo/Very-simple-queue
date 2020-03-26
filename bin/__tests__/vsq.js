@@ -92,7 +92,7 @@ describe('bin/vsq.js', () => {
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
   -v, --value [VALUE]      Data to be added (string)
-  -h, --help               output usage information
+  -h, --help               display help for command
 `
       ;[
         `node ${binVsq} unshift`,
@@ -115,7 +115,7 @@ Options:
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
   -v, --value [VALUE]      Data to be added (string)
-  -h, --help               output usage information
+  -h, --help               display help for command
 `
       ;[
         `node ${binVsq} push`,
@@ -137,7 +137,7 @@ Options:
 
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
-  -h, --help               output usage information
+  -h, --help               display help for command
 `
       ;[
         `node ${binVsq} shift`
@@ -157,7 +157,7 @@ Options:
 
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueue
-  -h, --help               output usage information
+  -h, --help               display help for command
 `
       ;[
         `node ${binVsq} pop`
@@ -178,7 +178,7 @@ Options:
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
   -v, --value [VALUE]      Data to be added (string)
-  -h, --help               output usage information
+  -h, --help               display help for command
 `
       ;[
         `node ${binVsq} send`,
@@ -200,7 +200,7 @@ Options:
 
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
-  -h, --help               output usage information
+  -h, --help               display help for command
 `
       ;[
         `node ${binVsq} receive`
@@ -221,7 +221,7 @@ Options:
 Options:
   -d, --db [DB_FILE_PATH]  Path of DB file used by VerySimpleQueueLikeSQS
   -i, --id [DATA_ID]       Id of the data to delete
-  -h, --help               output usage information
+  -h, --help               display help for command
 `
       ;[
         `node ${binVsq} delete`,
