@@ -27,12 +27,12 @@
   },
   "homepage": "https://github.com/abetomo/Very-simple-queue#readme",
   "devDependencies": {
-    "jest": "^25.2.0",
-    "standard": "^14.3.3"
+    "jest": "^26.4.0",
+    "standard": "^14.3.4"
   },
   "dependencies": {
-    "commander": "^5.1.0",
-    "uuid": "^7.0.2"
+    "commander": "^6.0.0",
+    "uuid": "^8.3.0"
   },
   "files": [
     "LICENSE",
