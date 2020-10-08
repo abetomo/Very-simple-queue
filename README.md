@@ -1,6 +1,7 @@
 # Very-simple-queue
 
 [![npm version](https://badge.fury.io/js/%40abetomo%2Fvsq.svg)](https://badge.fury.io/js/%40abetomo%2Fvsq)
+![Test](https://github.com/abetomo/Very-simple-queue/workflows/Test/badge.svg)
 
 Very simple queue.
 And a very simple SQS like queue.
