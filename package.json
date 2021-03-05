@@ -21,7 +21,7 @@
     "sqs"
   ],
   "author": "abetomo",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/abetomo/Very-simple-queue/issues"
   },
