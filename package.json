@@ -1,6 +1,6 @@
 {
   "name": "@abetomo/vsq",
-  "version": "3.0.3",
+  "version": "4.0.0",
   "description": "Very simple queue. And a very simple SQS like queue.",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "unit": "jest -w 1"
   },
   "bin": {
-    "vsq": "./bin/vsq.js"
+    "vsq": "bin/vsq.js"
   },
   "repository": {
     "type": "git",
