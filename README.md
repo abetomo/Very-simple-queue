@@ -54,12 +54,44 @@ true
 
 ## Usage example of Node.js API
 ### Simple queue and stack
+#### File
 ```javascript
 const VerySimpleQueue = require('@abetomo/vsq')
 const vsq = new VerySimpleQueue()
 const dbFile = '/tmp/test.db'
 
 vsq.load(dbFile)
+
+console.log('[unshift] data size: %s', vsq.unshift('value1'))
+console.log('[unshift] data size: %s', vsq.unshift('value2'))
+console.log('[push] data size: %s', vsq.push('value3'))
+console.log('[push] data size: %s', vsq.push('value4'))
+
+console.log('[shift]: %s', vsq.shift())
+console.log('[shift]: %s', vsq.shift())
+console.log('[pop]: %s', vsq.pop())
+console.log('[pop]: %s', vsq.pop())
+
+/*
+ * Result:
+ *
+ * [unshift] data size: 1
+ * [unshift] data size: 2
+ * [push] data size: 3
+ * [push] data size: 4
+ * [shift]: value2
+ * [shift]: value1
+ * [pop]: value4
+ * [pop]: value3
+ */
+```
+
+#### Memory
+```javascript
+const VerySimpleQueue = require('@abetomo/vsq')
+const vsq = new VerySimpleQueue()
+
+vsq.load(':memory:') // Specify ':memory:'
 
 console.log('[unshift] data size: %s', vsq.unshift('value1'))
 console.log('[unshift] data size: %s', vsq.unshift('value2'))
