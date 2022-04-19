@@ -3,10 +3,14 @@
 const os = require('os')
 const fs = require('fs')
 const path = require('path')
-const execSync = require('child_process').execSync
+const { execFileSync } = require('child_process')
 
 const binVsq = path.join(__dirname, '..', 'vsq.js')
 const testFile = path.join(os.tmpdir(), 'test.json')
+
+const execCmd = (options) => {
+  return execFileSync('node', [binVsq].concat(options))
+}
 
 /* global describe, test, expect, afterEach */
 describe('bin/vsq.js', () => {
@@ -16,23 +20,23 @@ describe('bin/vsq.js', () => {
 
   test('The current version is displayed', () => {
     const packageJson = require(path.join(__dirname, '../..', 'package.json'))
-    const ret = execSync(`node ${binVsq} --version`)
+    const ret = execCmd(['--version'])
     expect(ret.toString().trim()).toBe(packageJson.version)
   })
 
   describe('unshift and shift', () => {
     let ret = null
     test('Test the result of the command', () => {
-      ret = execSync(`node ${binVsq} unshift -d ${testFile} -v v1`)
+      ret = execCmd(['unshift', '-d', testFile, '-v', 'v1'])
       expect(ret.toString()).toBe('')
-      ret = execSync(`node ${binVsq} unshift -d ${testFile} -v v2`)
+      ret = execCmd(['unshift', '-d', testFile, '-v', 'v2'])
       expect(ret.toString()).toBe('')
 
-      ret = execSync(`node ${binVsq} shift -d ${testFile}`)
+      ret = execCmd(['shift', '-d', testFile])
       expect(ret.toString().trim()).toBe('v2')
-      ret = execSync(`node ${binVsq} shift -d ${testFile}`)
+      ret = execCmd(['shift', '-d', testFile])
       expect(ret.toString().trim()).toBe('v1')
-      ret = execSync(`node ${binVsq} shift -d ${testFile}`)
+      ret = execCmd(['shift', '-d', testFile])
       expect(ret.toString().trim()).toBe('')
     })
   })
@@ -40,16 +44,16 @@ describe('bin/vsq.js', () => {
   describe('push and pop', () => {
     let ret = null
     test('Test the result of the command', () => {
-      ret = execSync(`node ${binVsq} push -d ${testFile} -v v1`)
+      ret = execCmd(['push', '-d', testFile, '-v', 'v1'])
       expect(ret.toString()).toBe('')
-      ret = execSync(`node ${binVsq} push -d ${testFile} -v v2`)
+      ret = execCmd(['push', '-d', testFile, '-v', 'v2'])
       expect(ret.toString()).toBe('')
 
-      ret = execSync(`node ${binVsq} pop -d ${testFile}`)
+      ret = execCmd(['pop', '-d', testFile])
       expect(ret.toString().trim()).toBe('v2')
-      ret = execSync(`node ${binVsq} pop -d ${testFile}`)
+      ret = execCmd(['pop', '-d', testFile])
       expect(ret.toString().trim()).toBe('v1')
-      ret = execSync(`node ${binVsq} pop -d ${testFile}`)
+      ret = execCmd(['pop', '-d', testFile])
       expect(ret.toString().trim()).toBe('')
     })
   })
@@ -62,23 +66,23 @@ describe('bin/vsq.js', () => {
       /\d{9}-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/
 
     test('Test the result of the command', () => {
-      ret = execSync(`node ${binVsq} send -d ${testFile} -v v1`)
+      ret = execCmd(['send', '-d', testFile, '-v', 'v1'])
       id1 = ret.toString().trim()
       expect(id1).toMatch(idRegExp)
 
-      ret = execSync(`node ${binVsq} send -d ${testFile} -v v2`)
+      ret = execCmd(['send', '-d', testFile, '-v', 'v2'])
       id2 = ret.toString().trim()
       expect(id2).toMatch(idRegExp)
 
-      ret = execSync(`node ${binVsq} receive -d ${testFile}`)
+      ret = execCmd(['receive', '-d', testFile])
       let data = JSON.parse(ret.toString().trim())
       expect(data.id).toMatch(idRegExp)
       expect(data.body).toMatch(/^v\d$/)
 
-      ret = execSync(`node ${binVsq} delete -d ${testFile} -i ${id1}`)
+      ret = execCmd(['delete', '-d', testFile, '-i', id1])
       expect(ret.toString().trim()).toBe('true')
 
-      ret = execSync(`node ${binVsq} receive -d ${testFile}`)
+      ret = execCmd(['receive', '-d', testFile])
       data = JSON.parse(ret.toString().trim())
       expect(data.id).toBe(id2)
       expect(data.body).toBe('v2')
@@ -95,13 +99,13 @@ Options:
   -h, --help               display help for command
 `
       ;[
-        `node ${binVsq} unshift`,
-        `node ${binVsq} unshift -d ${testFile}`,
-        `node ${binVsq} unshift -v value`
-      ].forEach((command) => {
-        expect(() => execSync(command)).toThrow()
+        ['unshift'],
+        ['unshift', '-d', testFile],
+        ['unshift', '-v', 'value']
+      ].forEach((args) => {
+        expect(() => execCmd(args)).toThrow()
         try {
-          execSync(command)
+          execCmd(args)
         } catch (error) {
           expect(error.status).toBe(255)
           expect(error.stdout.toString()).toBe(expected)
@@ -118,13 +122,13 @@ Options:
   -h, --help               display help for command
 `
       ;[
-        `node ${binVsq} push`,
-        `node ${binVsq} push -d ${testFile}`,
-        `node ${binVsq} push -v value`
-      ].forEach((command) => {
-        expect(() => execSync(command)).toThrow()
+        ['push'],
+        ['push', '-d', testFile],
+        ['push', '-v', 'value']
+      ].forEach((args) => {
+        expect(() => execCmd(args)).toThrow()
         try {
-          execSync(command)
+          execCmd(args)
         } catch (error) {
           expect(error.status).toBe(255)
           expect(error.stdout.toString()).toBe(expected)
@@ -140,11 +144,11 @@ Options:
   -h, --help               display help for command
 `
       ;[
-        `node ${binVsq} shift`
-      ].forEach((command) => {
-        expect(() => execSync(command)).toThrow()
+        ['shift']
+      ].forEach((args) => {
+        expect(() => execCmd(args)).toThrow()
         try {
-          execSync(command)
+          execCmd(args)
         } catch (error) {
           expect(error.status).toBe(255)
           expect(error.stdout.toString()).toBe(expected)
@@ -160,11 +164,11 @@ Options:
   -h, --help               display help for command
 `
       ;[
-        `node ${binVsq} pop`
-      ].forEach((command) => {
-        expect(() => execSync(command)).toThrow()
+        ['pop']
+      ].forEach((args) => {
+        expect(() => execCmd(args)).toThrow()
         try {
-          execSync(command)
+          execCmd(args)
         } catch (error) {
           expect(error.status).toBe(255)
           expect(error.stdout.toString()).toBe(expected)
@@ -181,13 +185,13 @@ Options:
   -h, --help               display help for command
 `
       ;[
-        `node ${binVsq} send`,
-        `node ${binVsq} send -d ${testFile}`,
-        `node ${binVsq} send -v value`
-      ].forEach((command) => {
-        expect(() => execSync(command)).toThrow()
+        ['send'],
+        ['send', '-d', testFile],
+        ['send', '-v', 'value']
+      ].forEach((args) => {
+        expect(() => execCmd(args)).toThrow()
         try {
-          execSync(command)
+          execCmd(args)
         } catch (error) {
           expect(error.status).toBe(255)
           expect(error.stdout.toString()).toBe(expected)
@@ -203,11 +207,11 @@ Options:
   -h, --help               display help for command
 `
       ;[
-        `node ${binVsq} receive`
-      ].forEach((command) => {
-        expect(() => execSync(command)).toThrow()
+        ['receive']
+      ].forEach((args) => {
+        expect(() => execCmd(args)).toThrow()
         try {
-          execSync(command)
+          execCmd(args)
         } catch (error) {
           expect(error.status).toBe(255)
           expect(error.stdout.toString()).toBe(expected)
@@ -224,13 +228,13 @@ Options:
   -h, --help               display help for command
 `
       ;[
-        `node ${binVsq} delete`,
-        `node ${binVsq} delete -d ${testFile}`,
-        `node ${binVsq} delete -i id`
-      ].forEach((command) => {
-        expect(() => execSync(command)).toThrow()
+        ['delete'],
+        ['delete', '-d', testFile],
+        ['delete', '-i', 'id']
+      ].forEach((args) => {
+        expect(() => execCmd(args)).toThrow()
         try {
-          execSync(command)
+          execCmd(args)
         } catch (error) {
           expect(error.status).toBe(255)
           expect(error.stdout.toString()).toBe(expected)
