@@ -28,7 +28,7 @@
   "homepage": "https://github.com/abetomo/Very-simple-queue#readme",
   "devDependencies": {
     "jest": "^27.2.0",
-    "standard": "^16.0.3"
+    "standard": "^17.0.0"
   },
   "dependencies": {
     "commander": "^8.2.0",
