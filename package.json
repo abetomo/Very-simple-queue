@@ -33,7 +33,7 @@
   "dependencies": {
     "commander": "^8.2.0",
     "memfs": "^3.4.0",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "files": [
     "LICENSE",
