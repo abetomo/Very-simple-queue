@@ -5,9 +5,9 @@
 const VerySimpleQueue = require('..')
 const VerySimpleQueueLikeSQS = require('..').SQS
 const { program } = require('commander')
-const fs = require('fs')
+const { existsSync } = require('node:fs')
 const path = require('path')
-const packageJson = fs.existsSync(path.join(process.cwd(), 'package.json')) ? require(path.join(process.cwd(), 'package.json')) : {}
+const packageJson = existsSync(path.join(process.cwd(), 'package.json')) ? require(path.join(process.cwd(), 'package.json')) : {}
 const vsq = new VerySimpleQueue()
 const vsqLikeSqs = new VerySimpleQueueLikeSQS()
 

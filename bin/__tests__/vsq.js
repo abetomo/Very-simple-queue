@@ -1,7 +1,7 @@
 'use strict'
 
 const os = require('os')
-const fs = require('fs')
+const { existsSync, unlinkSync } = require('node:fs')
 const path = require('path')
 const { execFileSync } = require('child_process')
 
@@ -15,7 +15,7 @@ const execCmd = (options) => {
 /* global describe, test, expect, afterEach */
 describe('bin/vsq.js', () => {
   afterEach(() => {
-    if (fs.existsSync(testFile)) fs.unlinkSync(testFile)
+    if (existsSync(testFile)) unlinkSync(testFile)
   })
 
   test('The current version is displayed', () => {
