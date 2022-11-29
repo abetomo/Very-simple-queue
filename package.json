@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "commander": "^9.4.1",
-    "memfs": "^3.4.11",
+    "memfs": "^3.4.12",
     "uuid": "^9.0.0"
   },
   "files": [
