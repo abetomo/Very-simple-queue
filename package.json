@@ -32,8 +32,7 @@
   },
   "dependencies": {
     "commander": "^14.0.0",
-    "memfs": "^4.2.0",
-    "uuid": "^11.0.3"
+    "memfs": "^4.2.0"
   },
   "files": [
     "LICENSE",
@@ -50,6 +49,6 @@
     "collectCoverage": true
   },
   "engines": {
-    "node": ">= 8.0.0"
+    "node": ">= 15.6.0"
   }
 }
